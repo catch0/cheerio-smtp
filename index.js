@@ -41,15 +41,16 @@ nightmare.goto('http://dallas.craigslist.org/search/bia?query=road&hasPic=1&post
   from:'lumanwalters@gmail.com',
   to: 'spencerpeacock@gmail.com',
   subject: "bikes",
-  html: '' + result 
+  html: '' + JSON.stringify(result)
 
 }
-  transporter.sendMail(mailOptions, function (err, info) {
-     if(err)
-       console.log(err)
-     else
-       console.log(info);
-  });
+console.log(mailOptions.html)
+  // transporter.sendMail(mailOptions, function (err, info) {
+  //    if(err)
+  //      console.log(err)
+  //    else
+  //      console.log(info);
+  // });
 })
 
 
