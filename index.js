@@ -9,7 +9,7 @@ var jquery = require('jquery');
 var account = process.env.ACCOUNT ;
 var password = process.env.PASS ;
 var nodemailer = require('nodemailer');
-
+var jquery = require('jquery');
 
 
 var transporter = nodemailer.createTransport({
@@ -40,17 +40,18 @@ nightmare.goto('http://dallas.craigslist.org/search/bia?query=road&hasPic=1&post
   const mailOptions = {
   from:'lumanwalters@gmail.com',
   to: 'spencerpeacock@gmail.com',
-  subject: "bikes",
-  html: '' + JSON.stringify(result)
-
+  subject: 'bikes with JSON mapping',
+  html:'' + result.map((a, index)=>{
+    console.log(a.title, a.link)
+  })
 }
 console.log(mailOptions.html)
-  // transporter.sendMail(mailOptions, function (err, info) {
-  //    if(err)
-  //      console.log(err)
-  //    else
-  //      console.log(info);
-  // });
+  transporter.sendMail(mailOptions, function (err, info) {
+     if(err)
+       console.log(err)
+     else
+       console.log(info);
+  });
 })
 
 
